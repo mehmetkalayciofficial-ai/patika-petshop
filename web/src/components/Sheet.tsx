@@ -119,6 +119,7 @@ export function Confirm({
   confirmLabel = "Evet",
   tone = "danger",
   loading,
+  children,
 }: {
   open: boolean;
   onClose: () => void;
@@ -128,6 +129,7 @@ export function Confirm({
   confirmLabel?: string;
   tone?: "danger" | "primary";
   loading?: boolean;
+  children?: React.ReactNode;
 }) {
   return (
     <AnimatePresence>
@@ -149,6 +151,7 @@ export function Confirm({
           >
             <h3 className="text-[17px] font-bold text-ink-900">{title}</h3>
             {text && <p className="mt-2 text-[14px] leading-relaxed text-ink-500">{text}</p>}
+            {children && <div className="mt-4">{children}</div>}
             <div className="mt-5 flex gap-2.5">
               <button
                 onClick={onClose}

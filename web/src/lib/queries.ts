@@ -26,7 +26,7 @@ export async function getAyarlar(): Promise<Settings | null> {
   if (DEMO_MOD) return DEMO_AYARLAR;
   const supabase = await supabaseServer();
   const { data } = await supabase.from("settings").select("*").eq("id", 1).maybeSingle();
-  return (data as Settings) ?? null;
+  return (data as Settings | null) ?? null;
 }
 
 export async function getProfil(): Promise<Profile | null> {
@@ -37,5 +37,5 @@ export async function getProfil(): Promise<Profile | null> {
   const { data: auth } = await supabase.auth.getUser();
   if (!auth.user) return null;
   const { data } = await supabase.from("profiles").select("*").eq("id", auth.user.id).maybeSingle();
-  return (data as Profile) ?? null;
+  return (data as Profile | null) ?? null;
 }

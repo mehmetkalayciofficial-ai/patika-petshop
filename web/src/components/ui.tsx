@@ -41,7 +41,7 @@ export const Button = forwardRef<
       {...rest}
     >
       {loading && <Loader2 className="size-4 animate-spin" />}
-      {children}
+      {children as React.ReactNode}
     </motion.button>
   );
 });
