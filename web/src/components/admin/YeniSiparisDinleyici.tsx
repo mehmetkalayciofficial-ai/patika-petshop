@@ -8,7 +8,7 @@ import { BellRing, X } from "lucide-react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 import type { Order } from "@/lib/types";
 import { fiyat } from "@/lib/format";
-import { sesiHazirla, yeniSiparisBildir } from "@/lib/bildirim";
+import { bildirimTiklamasiniDinle, sesiHazirla, yeniSiparisBildir } from "@/lib/bildirim";
 
 type Banner = { id: string; no: number; ad: string; tutar: number };
 
@@ -27,6 +27,11 @@ export function YeniSiparisDinleyici({ onSayi }: { onSayi?: (n: number) => void 
     window.addEventListener("pointerdown", f, { once: true });
     return () => window.removeEventListener("pointerdown", f);
   }, []);
+
+  // bildirime tıklayınca ilgili sipariş açılsın (APK)
+  useEffect(() => {
+    return bildirimTiklamasiniDinle((orderId) => router.push(`/admin?siparis=${orderId}`));
+  }, [router]);
 
   useEffect(() => {
     const supabase = supabaseBrowser();

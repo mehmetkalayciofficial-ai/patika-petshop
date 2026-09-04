@@ -6,12 +6,15 @@
  * - Capacitor (admin APK): native yerel bildirim (kilit ekranına düşer, sesli)
  */
 
+type Dinleyici = { remove: () => Promise<void> | void };
+
 type CapPlugin = {
   LocalNotifications?: {
     schedule: (o: unknown) => Promise<unknown>;
     requestPermissions: () => Promise<{ display: string }>;
     checkPermissions: () => Promise<{ display: string }>;
     createChannel?: (o: unknown) => Promise<unknown>;
+    addListener?: (olay: string, geri: (v: unknown) => void) => Promise<Dinleyici> | Dinleyici;
   };
   Haptics?: { impact: (o: unknown) => Promise<unknown> };
 };
@@ -125,7 +128,6 @@ export async function yeniSiparisBildir(baslik: string, govde: string, orderId: 
             smallIcon: "ic_stat_paw",
             iconColor: "#F0B429",
             extra: { orderId },
-            schedule: { at: new Date(Date.now() + 120) },
           },
         ],
       });
@@ -142,4 +144,32 @@ export async function yeniSiparisBildir(baslik: string, govde: string, orderId: 
   } catch {
     /* yok say */
   }
+}
+
+/**
+ * Bildirime tıklandığında ilgili siparişi açar.
+ * Geri dönüş: dinleyiciyi kaldıran fonksiyon.
+ */
+export function bildirimTiklamasiniDinle(geri: (orderId: string) => void): () => void {
+  const p = cap();
+  if (!p?.LocalNotifications?.addListener) return () => {};
+
+  let dinleyici: Dinleyici | null = null;
+  let iptal = false;
+
+  void Promise.resolve(
+    p.LocalNotifications.addListener("localNotificationActionPerformed", (olay: unknown) => {
+      const veri = olay as { notification?: { extra?: { orderId?: string } } };
+      const id = veri?.notification?.extra?.orderId;
+      if (id) geri(id);
+    }),
+  ).then((d) => {
+    if (iptal) void d?.remove();
+    else dinleyici = d;
+  });
+
+  return () => {
+    iptal = true;
+    void dinleyici?.remove();
+  };
 }

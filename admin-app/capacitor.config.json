@@ -1,0 +1,31 @@
+{
+  "appId": "com.patikapetshop.admin",
+  "appName": "Patika Admin",
+  "webDir": "www",
+  "server": {
+    "url": "https://patikapetshopsiparis.vercel.app/admin",
+    "androidScheme": "https",
+    "cleartext": false,
+    "allowNavigation": ["patikapetshopsiparis.vercel.app", "*.supabase.co", "wa.me", "maps.google.com"]
+  },
+  "android": {
+    "backgroundColor": "#FBFAF7",
+    "allowMixedContent": false,
+    "webContentsDebuggingEnabled": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 900,
+      "launchAutoHide": true,
+      "backgroundColor": "#F0B429",
+      "androidSplashResourceName": "splash",
+      "androidScaleType": "CENTER_CROP",
+      "showSpinner": false
+    },
+    "LocalNotifications": {
+      "smallIcon": "ic_stat_paw",
+      "iconColor": "#F0B429",
+      "sound": "ding.wav"
+    }
+  }
+}

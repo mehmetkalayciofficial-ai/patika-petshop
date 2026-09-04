@@ -13,3 +13,4 @@ admin-app/android/.gradle/
 admin-app/android/app/build/
 admin-app/android/build/
 admin-app/android/local.properties
+.vercel
