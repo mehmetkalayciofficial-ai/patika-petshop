@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+dist/*.apk
+.env
+.env.local
+.env*.local
+.DS_Store
+*.log
+scripts/node_modules
+admin-app/android/keystore/*.jks
+admin-app/android/.gradle/
+admin-app/android/app/build/
+admin-app/android/build/
+admin-app/android/local.properties
