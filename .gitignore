@@ -1,7 +1,7 @@
 node_modules/
 .next/
 out/
-dist/*.apk
+# APK repoda tutuluyor (kolay indirilebilsin diye)
 .env
 .env.local
 .env*.local
