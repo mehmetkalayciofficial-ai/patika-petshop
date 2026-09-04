@@ -1,10 +1,15 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
+import { DEMO_MOD } from "@/lib/demo";
 
 const AUTH_ROTALARI = ["/giris", "/sifremi-unuttum", "/sifre-yenile"];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+
+  // Supabase anahtarları girilmediyse yönlendirme yapma (demo)
+  if (DEMO_MOD) return NextResponse.next();
+
   const { response, user } = await updateSession(request);
 
   const authSayfasi = AUTH_ROTALARI.some((r) => pathname === r || pathname.startsWith(r + "/"));

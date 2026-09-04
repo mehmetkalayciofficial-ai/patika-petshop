@@ -40,7 +40,7 @@ export function AuthBackground() {
       </motion.picture>
 
       {/* Okunabilirlik gradyanı */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-black/15" aria-hidden />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/45 to-black/25" aria-hidden />
     </div>
   );
 }
