@@ -23,6 +23,7 @@ export function Catalog({
   onQuickStock,
   onAddProduct,
   aramaAcRef,
+  heroyaBin = true,
 }: {
   kategoriler: CategoryWithProducts[];
   duzenleme?: boolean;
@@ -31,6 +32,8 @@ export function Catalog({
   onQuickStock?: (p: Product) => void;
   onAddProduct?: (categoryId: string) => void;
   aramaAcRef?: React.MutableRefObject<(() => void) | null>;
+  /** Arama kutusu hero'nun üstüne binsin mi (adminde araya düzenleme çubuğu giriyor) */
+  heroyaBin?: boolean;
 }) {
   const { ekle, azalt, miktar } = useCart();
   const [arama, setArama] = useState("");
@@ -123,7 +126,7 @@ export function Catalog({
   return (
     <>
       {/* Arama — hero'nun altına biner */}
-      <div className="relative z-30 mx-auto -mt-6 max-w-6xl px-4 sm:px-6">
+      <div className={`relative z-30 mx-auto max-w-6xl px-4 sm:px-6 ${heroyaBin ? "-mt-6" : "mt-3"}`}>
         <div className="relative">
           <Search className="pointer-events-none absolute left-4 top-1/2 size-[18px] -translate-y-1/2 text-ink-400" />
           <input

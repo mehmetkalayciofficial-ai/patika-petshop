@@ -119,6 +119,7 @@ export function AdminUrunler({
       <Catalog
         kategoriler={kategoriler}
         duzenleme={duzenleme}
+        heroyaBin={false}
         aramaAcRef={aramaAc}
         onEditProduct={(p) => setUrunSheet({ acik: true, urun: p })}
         onEditCategory={(id) => setKatSheet({ acik: true, kategori: kategoriler.find((c) => c.id === id) ?? null })}

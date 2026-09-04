@@ -420,11 +420,22 @@ create policy settings_write on public.settings for all to authenticated
 --  Realtime
 -- ---------------------------------------------------------------------
 
-alter publication supabase_realtime add table public.orders;
-alter publication supabase_realtime add table public.order_items;
-alter publication supabase_realtime add table public.products;
-alter publication supabase_realtime add table public.categories;
+-- (tekrar çalıştırılabilir olsun diye zaten ekliyse atla)
+do $$
+declare t text;
+begin
+  foreach t in array array['orders','order_items','products','categories'] loop
+    if not exists (
+      select 1 from pg_publication_tables
+       where pubname = 'supabase_realtime' and schemaname = 'public' and tablename = t
+    ) then
+      execute format('alter publication supabase_realtime add table public.%I', t);
+    end if;
+  end loop;
+end $$;
+
 alter table public.orders replica identity full;
+alter table public.products replica identity full;
 
 -- ---------------------------------------------------------------------
 --  Storage — product-images
