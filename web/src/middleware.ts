@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
 import { DEMO_MOD } from "@/lib/demo";
 
-const AUTH_ROTALARI = ["/giris", "/sifremi-unuttum", "/sifre-yenile"];
+const AUTH_ROTALARI = ["/giris", "/sifremi-unuttum", "/sifre-yenile", "/admin/giris", "/kosullar", "/kvkk"];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -14,18 +14,18 @@ export async function middleware(request: NextRequest) {
 
   const authSayfasi = AUTH_ROTALARI.some((r) => pathname === r || pathname.startsWith(r + "/"));
 
-  // Oturum yok → herkes önce giriş/kayıt ekranına düşer
+  // Oturum yok → herkes önce giriş/kayıt ekranına düşer (admin kendi ekranına)
   if (!user && !authSayfasi) {
     const url = request.nextUrl.clone();
-    url.pathname = "/giris";
+    url.pathname = pathname.startsWith("/admin") ? "/admin/giris" : "/giris";
     url.search = pathname === "/" ? "" : `?next=${encodeURIComponent(pathname)}`;
     return NextResponse.redirect(url);
   }
 
-  // Oturum var + auth sayfasındaysa → ürünlere
-  if (user && authSayfasi && pathname !== "/sifre-yenile") {
+  // Oturum var + auth sayfasındaysa → uygun ana ekrana
+  if (user && authSayfasi && !["/sifre-yenile", "/kosullar", "/kvkk"].includes(pathname)) {
     const url = request.nextUrl.clone();
-    url.pathname = "/urunler";
+    url.pathname = pathname === "/admin/giris" ? "/admin" : "/urunler";
     url.search = "";
     return NextResponse.redirect(url);
   }

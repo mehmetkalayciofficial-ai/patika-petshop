@@ -6,6 +6,9 @@ export const SITE = {
   url: "https://patikapetshopsiparis.vercel.app",
 } as const;
 
+/** Admin uygulamasındaki "admin" kullanıcı adının eşlendiği e-posta. */
+export const ADMIN_EPOSTA = "admin@patikapetshop.app";
+
 export const MARKA = {
   ana: "#F0B429",
   vurgu: "#C0492B",
