@@ -5,7 +5,7 @@ Petshop için online sipariş sistemi. İki parça:
 | Parça | Ne işe yarar | Nerede |
 |---|---|---|
 | **Web sitesi** | Müşteriler girer, kayıt olur, sepete ekler, sipariş verir | https://patikapetshopsiparis.vercel.app |
-| **Admin uygulaması (APK)** | Dükkan sahibi siparişleri görür, ürünleri yönetir | `dist/PatikaAdmin-v1.0.0.apk` |
+| **Admin uygulaması (APK)** | Dükkan sahibi siparişleri görür, ürünleri yönetir | `dist/PatikaAdmin-v1.0.1.apk` |
 
 ---
 
@@ -120,7 +120,7 @@ Vercel projesinde aynı iki `NEXT_PUBLIC_*` değişkenini tanımlamayı unutma.
 
 ### Kurulum (telefona)
 
-1. `dist/PatikaAdmin-v1.0.0.apk` dosyasını telefona at (WhatsApp, Drive, kablo — fark etmez).
+1. `dist/PatikaAdmin-v1.0.1.apk` dosyasını telefona at (WhatsApp, Drive, kablo — fark etmez).
 2. Aç → “Bilinmeyen kaynaklara izin ver” çıkarsa izin ver.
 3. Uygulama açılışta **bildirim izni** ister → **İzin Ver** de. (Bu olmazsa sipariş bildirimi düşmez.)
 4. Giriş: kullanıcı adı `admin`, şifre `admin.234`.
