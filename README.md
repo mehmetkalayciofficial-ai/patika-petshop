@@ -25,7 +25,34 @@ patika-petshop/
 
 ---
 
-## 1. Supabase kurulumu
+## 1. Supabase — KURULU ✅
+
+Proje zaten açıldı ve her şey yüklendi:
+
+| | |
+|---|---|
+| Proje | `patika-petshop` · `lfbcdbowuskmogxmhwtm` |
+| Bölge | Frankfurt (Central EU) |
+| Panel | https://supabase.com/dashboard/project/lfbcdbowuskmogxmhwtm |
+| Hesap | Patika için açılan ayrı Supabase hesabı |
+| Admin girişi | kullanıcı adı `admin` · şifre `admin.234` |
+| Veritabanı şifresi | `supabase/db-sifresi.txt` (repoya girmiyor — **yedekle**) |
+
+Yüklenenler: şema + RLS + `place_order` RPC + storage kovası, 9 kategori / 18 örnek ürün,
+e-posta doğrulaması kapalı, site adresleri ayarlı, admin kullanıcısı hazır.
+
+Sıfırdan kurmak gerekirse (yeni hesap / yeni ortam):
+
+```bash
+SUPABASE_ACCESS_TOKEN=sbp_... node scripts/supabase-kur.mjs
+```
+
+Bu tek komut projeyi açar, şemayı ve örnek veriyi yükler, auth ayarlarını yapar,
+admin kullanıcısını oluşturur ve `web/.env.local` dosyasını yazar.
+
+<details>
+<summary>Elle kurulum adımları (gerekirse)</summary>
+
 
 1. [supabase.com](https://supabase.com) → yeni proje aç (bölge: **Frankfurt** ya da **Londra**).
 2. **SQL Editor** → `supabase/migrations/0001_init.sql` içeriğini yapıştır → çalıştır.
@@ -47,11 +74,15 @@ Bu, `admin@patikapetshop.app` kullanıcısını `admin.234` şifresiyle oluştur
 Uygulamada **kullanıcı adı: `admin`**, **şifre: `admin.234`**.
 ⚠️ Kurulumdan sonra uygulamadaki “Şifre Değiştir” ile şifreyi değiştirin.
 
-7. (İsteğe bağlı) Hesap silme fonksiyonu:
+</details>
+
+**Hesap silme fonksiyonu** (isteğe bağlı, henüz kurulmadı):
 
 ```bash
-npx supabase functions deploy delete-account
+npx supabase functions deploy delete-account --project-ref lfbcdbowuskmogxmhwtm
 ```
+
+Kurulmadan “Hesabımı Sil” butonu hata verir; diğer her şey çalışır.
 
 ---
 
