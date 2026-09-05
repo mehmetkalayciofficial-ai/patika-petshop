@@ -14,3 +14,4 @@ admin-app/android/app/build/
 admin-app/android/build/
 admin-app/android/local.properties
 .vercel
+supabase/db-sifresi.txt
