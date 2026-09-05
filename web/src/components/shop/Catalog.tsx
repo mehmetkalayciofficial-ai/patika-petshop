@@ -156,7 +156,7 @@ export function Catalog({
 
       {/* Kategori çipleri */}
       {!q && gorunen.length > 0 && (
-        <div className="sticky top-14 z-40 mt-4 border-b border-line/60 bg-page/88 backdrop-blur-xl">
+        <div className="sticky top-[calc(3.5rem+env(safe-area-inset-top))] z-40 mt-4 border-b border-line/60 bg-page/88 backdrop-blur-xl">
           <div ref={cipSeridi} className="no-scrollbar mx-auto flex max-w-6xl gap-2 overflow-x-auto px-4 py-3 sm:px-6">
             {gorunen.map((c) => {
               const on = aktif === c.id;

@@ -61,7 +61,7 @@ export function AdminUrunler({
       <Hero duyuru={duzenleme ? null : ayarlar?.announcement} />
 
       {/* Düzenleme çubuğu */}
-      <div className="sticky top-14 z-[45] border-b border-line/60 bg-page/90 backdrop-blur-xl">
+      <div className="sticky top-[calc(3.5rem+env(safe-area-inset-top))] z-[45] border-b border-line/60 bg-page/90 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-2 px-4 py-2.5 sm:px-6">
           <AnimatePresence mode="wait" initial={false}>
             {duzenleme ? (

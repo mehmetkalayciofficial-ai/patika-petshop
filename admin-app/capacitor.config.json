@@ -6,12 +6,18 @@
     "url": "https://patikapetshopsiparis.vercel.app/admin",
     "androidScheme": "https",
     "cleartext": false,
-    "allowNavigation": ["patikapetshopsiparis.vercel.app", "*.supabase.co", "wa.me", "maps.google.com"]
+    "allowNavigation": [
+      "patikapetshopsiparis.vercel.app",
+      "*.supabase.co",
+      "wa.me",
+      "maps.google.com"
+    ]
   },
   "android": {
     "backgroundColor": "#FBFAF7",
     "allowMixedContent": false,
-    "webContentsDebuggingEnabled": false
+    "webContentsDebuggingEnabled": false,
+    "adjustMarginsForEdgeToEdge": "force"
   },
   "plugins": {
     "SplashScreen": {
@@ -26,6 +32,11 @@
       "smallIcon": "ic_stat_paw",
       "iconColor": "#F0B429",
       "sound": "ding.wav"
+    },
+    "StatusBar": {
+      "overlaysWebView": false,
+      "style": "LIGHT",
+      "backgroundColor": "#FFFFFF"
     }
   }
 }

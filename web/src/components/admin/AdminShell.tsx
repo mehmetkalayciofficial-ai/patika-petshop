@@ -42,7 +42,7 @@ export function AdminShell({ profil, children }: { profil: Profile; children: Re
 
   return (
     <div className="flex min-h-dvh flex-col bg-page">
-      <header className="sticky top-0 z-50 border-b border-line bg-white/90 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-line bg-white/90 pt-[env(safe-area-inset-top)] backdrop-blur-xl">
         <div className="mx-auto flex h-14 max-w-6xl items-center gap-3 px-4 sm:px-6">
           <Image src="/brand/logo-128.png" alt="" width={34} height={34} className="size-[34px] rounded-full ring-1 ring-brand-200" />
           <div className="min-w-0">

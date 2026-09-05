@@ -250,8 +250,8 @@ export function Checkout({ profil, kapali }: { profil: Profile | null; kapali: b
       </Bolum>
 
       {/* Sabit alt buton */}
-      <div className="fixed inset-x-0 bottom-0 z-[55] border-t border-line bg-white/95 px-4 pb-[calc(env(safe-area-inset-bottom)+4.25rem)] pt-3 backdrop-blur-xl sm:pb-4">
-        <div className="mx-auto max-w-2xl">
+      <div className="pointer-events-none fixed inset-x-0 bottom-0 z-[55] px-4 pb-[calc(env(safe-area-inset-bottom)+4.25rem)] pt-3 sm:pb-4">
+        <div className="pointer-events-auto mx-auto max-w-2xl rounded-[18px] bg-white/92 p-2 shadow-float backdrop-blur-xl">
           <Button full size="lg" loading={gonderiliyor} disabled={kapali || !seciliAdres} onClick={siparisVer}>
             {kapali ? "Şu an sipariş alamıyoruz" : `Siparişi Onayla · ${fiyat(toplam)}`}
           </Button>

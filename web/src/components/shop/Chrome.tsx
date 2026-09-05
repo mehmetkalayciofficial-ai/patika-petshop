@@ -18,7 +18,7 @@ export function TopBar({ onSearch, onCart }: { onSearch?: () => void; onCart: ()
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line/70 bg-page/85 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-line/70 bg-page/85 pt-[env(safe-area-inset-top)] backdrop-blur-xl">
       <div className="mx-auto flex h-14 max-w-6xl items-center gap-3 px-4 sm:px-6">
         <Link href="/urunler" className="flex min-w-0 items-center gap-2.5">
           <Image src="/brand/logo-128.png" alt="" width={36} height={36} className="size-9 shrink-0 rounded-full ring-1 ring-brand-200" />

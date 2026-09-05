@@ -18,13 +18,20 @@ export function Hero({ duyuru, kapali }: { duyuru?: string | null; kapali?: bool
         </picture>
 
         {/* aşağı doğru koyulaşan katman */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-black/35 to-black/72" aria-hidden />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,.62) 22%, rgba(0,0,0,.34) 52%, rgba(0,0,0,.18) 100%)",
+          }}
+          aria-hidden
+        />
 
         {/* çok soluk pati deseni */}
         <PawPattern className="pointer-events-none absolute -right-6 -top-8 size-56 text-white/[.07] sm:size-72" />
 
         <div className="absolute inset-x-0 bottom-0">
-          <div className="mx-auto flex max-w-6xl items-end gap-3.5 px-4 pb-5 sm:px-6 sm:pb-7">
+          <div className="mx-auto flex max-w-6xl items-end gap-3.5 px-4 pb-10 sm:px-6 sm:pb-12">
             <Image
               src="/brand/logo-192.png"
               alt=""

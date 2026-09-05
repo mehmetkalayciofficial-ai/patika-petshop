@@ -48,13 +48,22 @@ export function PwaIpucu() {
     return () => window.removeEventListener("beforeinstallprompt", f);
   }, []);
 
-  function kapat() {
-    setGoster(false);
+  const gorulduIsaretle = () => {
     try {
       localStorage.setItem(KEY, "1");
     } catch {
       /* yok say */
     }
+  };
+
+  // Bir kez göründüyse bir daha çıkmasın (kullanıcı kapatmasa bile)
+  useEffect(() => {
+    if (goster) gorulduIsaretle();
+  }, [goster]);
+
+  function kapat() {
+    setGoster(false);
+    gorulduIsaretle();
   }
 
   async function yukle() {
@@ -71,9 +80,9 @@ export function PwaIpucu() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 80, opacity: 0 }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="fixed inset-x-0 bottom-0 z-[60] px-4 pb-[calc(env(safe-area-inset-bottom)+4.5rem)] sm:pb-5"
+          className="pointer-events-none fixed inset-x-0 bottom-0 z-[60] px-4 pb-[calc(env(safe-area-inset-bottom)+4.5rem)] sm:pb-5"
         >
-          <div className="mx-auto flex max-w-md items-center gap-3 rounded-[18px] bg-ink-900 p-3 shadow-float">
+          <div className="pointer-events-auto mx-auto flex max-w-md items-center gap-3 rounded-[18px] bg-ink-900 p-3 shadow-float">
             <Image src="/brand/logo-128.png" alt="" width={40} height={40} className="size-10 shrink-0 rounded-full" />
             <div className="min-w-0 flex-1">
               <p className="text-[13.5px] font-bold text-white">Ana ekrana ekle</p>
